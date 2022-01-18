@@ -9,6 +9,8 @@ public class PlayerScript : MonoBehaviour {
 
     private Rigidbody2D rb;
     private float moveInput;
+
+    public bool isColliding;
     
 
     void Start() {
@@ -21,8 +23,25 @@ public class PlayerScript : MonoBehaviour {
     }
 
     void Update() {
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            rb.AddForce(new Vector2(0, jumpHeight), ForceMode2D.Impulse);
+        if (isColliding){
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                rb.AddForce(new Vector2(0, jumpHeight), ForceMode2D.Impulse);
+            }
         }
+    }
+
+    void OnTriggerExit(Collider col){
+        if (col.name == "Hero")
+        {
+            isColliding = false;
+        }
+    }
+
+    void OnTriggerEnter(Collider col){
+        if (col.name == "Hero"){
+            isColliding = true;
+        }
+        
     }
 }
