@@ -15,6 +15,9 @@ public class PlayerScript : MonoBehaviour {
     public bool isColliding;
     public bool isGrounded = false;
 
+    public Animator anim;
+    public SpriteRenderer spriteR;
+
     private int jumps;
     public bool canDoubleJump = true; // pour plus tard : si on a débloqué le double saut ou pas
 
@@ -34,6 +37,10 @@ public class PlayerScript : MonoBehaviour {
     {
         moveInput = Input.GetAxisRaw("Horizontal");
         rb.velocity = new Vector2(moveInput * activeSpeed, rb.velocity.y);
+
+        flip(rb.velocity.x);
+        float charaVelocity = Mathf.Abs(rb.velocity.x);
+        anim.SetFloat("Speed", charaVelocity);
     }
 
     void Update()
@@ -41,6 +48,7 @@ public class PlayerScript : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.Space) && (isGrounded || jumps > 0)) // Si la touche espace est enfoncée & qu'il est sur le sol OU qu'il lui reste un double saut
         {
+            rb.velocity = Vector3.zero;
             Jump();
             jumps--;
         }
@@ -50,7 +58,6 @@ public class PlayerScript : MonoBehaviour {
             
             if (dashCoolCounter <= 0 && dashCounter <= 0)
             {
-                jumps = 0;
                 rb.velocity = Vector3.zero;
                 rb.gravityScale = 0f;
                 activeSpeed = moveSpeed * dashSpeed;
@@ -70,7 +77,7 @@ public class PlayerScript : MonoBehaviour {
             }
         }
 
-        if (dashCoolCounter > 0)
+        if (dashCoolCounter > 0 && isGrounded)
         {
             dashCoolCounter -= Time.deltaTime;
         }
@@ -85,6 +92,7 @@ public class PlayerScript : MonoBehaviour {
     void OnCollisionEnter2D(Collision2D col)
     {
         isGrounded = true;
+        anim.SetBool("isGrounded", isGrounded);
         if (canDoubleJump)
         {
             jumps = 2;
@@ -102,5 +110,18 @@ public class PlayerScript : MonoBehaviour {
             jumps--;
         }
         isGrounded = false;
+        anim.SetBool("isGrounded", isGrounded);
+    }
+
+    void flip(float velo)
+    {
+        if (velo > 0.1f)
+        {
+            spriteR.flipX = false;
+        }
+        else if (velo < -0.1f)
+        {
+            spriteR.flipX = true;
+        }
     }
 }
