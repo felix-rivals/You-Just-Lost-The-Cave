@@ -9,10 +9,11 @@ public class PlayerScript : MonoBehaviour {
     private float activeSpeed; // stockera la vitesse de base OU du dash selon si la touche shift est enfoncée ou non
 
     private Rigidbody2D rb;
+    public Camera cam;
     private float moveInput;
 
     public bool isColliding;
-    private bool isGrounded = true;
+    public bool isGrounded = false;
 
     private int jumps;
     public bool canDoubleJump = true; // pour plus tard : si on a débloqué le double saut ou pas
@@ -80,7 +81,6 @@ public class PlayerScript : MonoBehaviour {
     {
         rb.AddForce(new Vector2(0, jumpHeight), ForceMode2D.Impulse);
     }
-
 
     void OnCollisionEnter2D(Collision2D col)
     {
