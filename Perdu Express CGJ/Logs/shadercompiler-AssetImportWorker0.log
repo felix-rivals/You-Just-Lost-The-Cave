@@ -1,7 +1,6 @@
 Base path: 'C:/Users/Megaport/Documents/Unity Edit/2020.3.26f1/Editor/Data', plugins path 'C:/Users/Megaport/Documents/Unity Edit/2020.3.26f1/Editor/Data/PlaybackEngines'
 Cmd: initializeCompiler
 
-<<<<<<< Updated upstream
+Unhandled exception: Protocol error - failed to read magic number (error -2147483644, transferred 0/4)
 
-=======
->>>>>>> Stashed changes
+Quitting shader compiler process
