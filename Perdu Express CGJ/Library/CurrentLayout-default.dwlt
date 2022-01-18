@@ -19,9 +19,9 @@ MonoBehaviour:
     width: 1536
     height: 780.8
   m_ShowMode: 4
-  m_Title: Project
+  m_Title: Game
   m_RootView: {fileID: 2}
-  m_MinSize: {x: 875, y: 542}
+  m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
   m_Maximized: 1
 --- !u!114 &2
@@ -119,10 +119,10 @@ MonoBehaviour:
     y: 30
     width: 1536
     height: 731
-  m_MinSize: {x: 679, y: 492}
+  m_MinSize: {x: 677, y: 492}
   m_MaxSize: {x: 14002, y: 14042}
   vertical: 0
-  controlID: 64
+  controlID: 61
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -144,10 +144,10 @@ MonoBehaviour:
     y: 0
     width: 937
     height: 731
-  m_MinSize: {x: 403, y: 492}
+  m_MinSize: {x: 402, y: 492}
   m_MaxSize: {x: 10001, y: 14042}
   vertical: 1
-  controlID: 65
+  controlID: 62
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -169,10 +169,10 @@ MonoBehaviour:
     y: 0
     width: 937
     height: 454
-  m_MinSize: {x: 403, y: 221}
-  m_MaxSize: {x: 8003, y: 4021}
+  m_MinSize: {x: 402, y: 221}
+  m_MaxSize: {x: 8002, y: 4021}
   vertical: 0
-  controlID: 66
+  controlID: 63
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -275,10 +275,10 @@ MonoBehaviour:
     y: 0
     width: 599
     height: 731
-  m_MinSize: {x: 276, y: 292}
-  m_MaxSize: {x: 4001, y: 8042}
+  m_MinSize: {x: 275, y: 271}
+  m_MaxSize: {x: 4001, y: 8021}
   vertical: 1
-  controlID: 127
+  controlID: 129
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -325,8 +325,8 @@ MonoBehaviour:
     y: 480
     width: 599
     height: 251
-  m_MinSize: {x: 240, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 241, y: 221}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 22}
   m_Panes:
   - {fileID: 22}
@@ -402,7 +402,7 @@ MonoBehaviour:
       y: 21
       width: 733
       height: 412
-    m_Scale: {x: 0.3576389, y: 0.3576389}
+    m_Scale: {x: 0.35763887, y: 0.3576389}
     m_Translation: {x: 366.5, y: 206}
     m_MarginLeft: 0
     m_MarginRight: 0
@@ -451,9 +451,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
-      m_LastClickedID: 0
-      m_ExpandedIDs: f4e8ffff2ce9ffff54e9ffff92e9ffff66f4ffff1c4b00004c4b0000e4630000
+      m_SelectedIDs: f6620000
+      m_LastClickedID: 25334
+      m_ExpandedIDs: b4f1fffff2f1ffffa8f2ffffc2f2ffff66f4ffff26630000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -514,9 +514,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 192.94077, y: -72.556915, z: -13.201173}
+    m_Target: {x: -26.28894, y: 25.577528, z: -64.55324}
     speed: 2
-    m_Value: {x: 192.94077, y: -72.556915, z: -13.201173}
+    m_Value: {x: -26.28894, y: 25.577528, z: -64.55324}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -567,9 +567,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 167.48158
+    m_Target: 12.557944
     speed: 2
-    m_Value: 167.48158
+    m_Value: 12.557944
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -659,22 +659,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets
+    - Assets/Imports
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets
+  - Assets/Imports
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: C:\Users\malle\Desktop\perdu-express-CGJ\Perdu Express CGJ
+  m_LastProjectPath: C:\Users\Megaport\Desktop\perdu-express-CGJ\Perdu Express CGJ
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 39.80002}
-    m_SelectedIDs: 0a4c0000
-    m_LastClickedID: 19466
-    m_ExpandedIDs: 000000000a4c00000c4c00000e4c0000104c000000ca9a3b
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: 324c0000
+    m_LastClickedID: 19506
+    m_ExpandedIDs: 00000000184c00001a4c00001c4c00001e4c000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -702,7 +702,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000000a4c00000c4c00000e4c0000104c0000
+    m_ExpandedIDs: 00000000184c00001a4c00001c4c00001e4c0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -877,7 +877,7 @@ MonoBehaviour:
     m_CachedPref: -50
     m_ControlHash: 1964396721
     m_PrefName: Preview_TilemapBrushInspector
-  m_Palette: {fileID: 5146468702446226567, guid: f96972c21ea422b489e2a9bf3795d995,
+  m_Palette: {fileID: 3768306711372757810, guid: f26c4ef5f9239f94da3fec193a9a56b7,
     type: 3}
   m_DrawGizmos: 0
 --- !u!114 &23
