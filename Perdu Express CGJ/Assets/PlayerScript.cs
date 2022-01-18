@@ -11,6 +11,10 @@ public class PlayerScript : MonoBehaviour {
     private float moveInput;
 
     public bool isColliding;
+    private bool isGrounded = true;
+
+    private int jumps;
+    private bool canDoubleJump = false; // pour plus tard : si on a débloqué le double saut ou pas
     
 
     void Start() {
@@ -23,25 +27,33 @@ public class PlayerScript : MonoBehaviour {
     }
 
     void Update() {
-        if (isColliding){
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                rb.AddForce(new Vector2(0, jumpHeight), ForceMode2D.Impulse);
-            }
-        }
-    }
 
-    void OnTriggerExit(Collider col){
-        if (col.name == "Hero")
+        if (Input.GetKeyDown(KeyCode.Space) && (isGrounded || jumps > 0)) // Si la touche espace est enfoncée & qu'il est sur le sol OU qu'il lui reste un double saut
         {
-            isColliding = false;
-        }
-    }
-
-    void OnTriggerEnter(Collider col){
-        if (col.name == "Hero"){
-            isColliding = true;
+            Jump();
+            jumps--;
         }
         
     }
+
+    void Jump() {
+        rb.AddForce(new Vector2(0, jumpHeight), ForceMode2D.Impulse);
+    }
+
+
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        isGrounded = true;
+        if (canDoubleJump) {
+            jumps = 2;
+        } else {
+            jumps = 1;
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D col)
+    {
+        isGrounded = false;
+    }
+
 }
