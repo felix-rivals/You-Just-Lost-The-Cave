@@ -87,12 +87,27 @@ public class PlayerScript : MonoBehaviour {
     void Jump()
     {
         rb.AddForce(new Vector2(0, jumpHeight), ForceMode2D.Impulse);
+        jumps--;
     }
 
-    void OnCollisionEnter2D(Collision2D col)
+    void OnCollisionStay2D(Collision2D col)
     {
-        isGrounded = true;
-        anim.SetBool("isGrounded", isGrounded);
+        if (col.contacts.Length > 0)
+        {
+            ContactPoint2D contact = col.contacts[0];
+            if (Vector2.Dot(contact.normal, Vector2.up) > 0.5)
+            {
+                isGrounded = true;
+                anim.SetBool("isGrounded", isGrounded);
+                HowManyJumps();
+            }
+        }
+
+    }
+
+    void HowManyJumps()
+    {
+        jumps--;
         if (canDoubleJump)
         {
             jumps = 2;
@@ -105,10 +120,11 @@ public class PlayerScript : MonoBehaviour {
 
     void OnCollisionExit2D(Collision2D col)
     {
-        if (jumps == 2)
+        if (jumps == 2 || jumps == 1)
         {
             jumps--;
         }
+
         isGrounded = false;
         anim.SetBool("isGrounded", isGrounded);
     }
