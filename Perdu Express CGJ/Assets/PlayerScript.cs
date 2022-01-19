@@ -1,11 +1,12 @@
 using UnityEngine;
 
-public class PlayerScript : MonoBehaviour
+public class PlayerScript : MonoBehaviour //359.4, -35.2
 {
 
     private float defaultGravity = 2.8f;
     public float DefaultmoveSpeed;
     public float jumpHeight;
+    private float vertical;
 
     private float dashSpeed = 6f; // la vitesse du dash
     private float activeSpeed; // stockera la vitesse de base OU du dash selon si la touche shift est enfoncée ou non
@@ -20,7 +21,7 @@ public class PlayerScript : MonoBehaviour
     public Animator anim;
     public SpriteRenderer spriteR;
 
-    private int jumps;
+    private int jumps; //nb de jumps restant
     public bool canDoubleJump = false; // pour plus tard : si on a débloqué le double saut ou pas
 
     public bool canDash = false;
@@ -31,58 +32,6 @@ public class PlayerScript : MonoBehaviour
 
     public bool canClimbing = false;
     private bool isClimbing = false;
-
-    /*
-    private class LadderMovement : MonoBehaviour
-    {
-        private float vertical;
-        private float speed = 2f;
-        private bool isLadder;
-        private bool isClimbing;
-
-        [SerializeField] private Rigidbody2D rb;
-
-        void Update()
-        {
-            vertical = Input.GetAxisRaw("Vertical");
-
-            if (isLadder && Mathf.Abs(vertical) > 0f)
-            {
-                isClimbing = true;
-            }
-        }
-
-        private void FixedUpdate()
-        {
-            if (isClimbing)
-            {
-                rb.gravityScale = 1f;
-                rb.velocity = new Vector2(rb.velocity.x, vertical * speed);
-            }
-            else
-            {
-                rb.gravityScale = 1f;
-            }
-        }
-
-        private void OnTriggerEnter2D(Collider2D collision)
-        {
-            if (collision.CompareTag("Ladder"))
-            {
-                isLadder = true;
-            }
-        }
-
-        private void OnTriggerExit2D(Collider2D collision)
-        {
-            if (collision.CompareTag("Ladder"))
-            {
-                isLadder = false;
-                isClimbing = false;
-            }
-        }
-    }
-    */
 
     void Start()
     {
@@ -107,14 +56,17 @@ public class PlayerScript : MonoBehaviour
 
         checkJump();
         checkDash();
+        checkClimb();
         checkCheat();
 
     }
 
     private void checkJump()
     {
+        if(isClimbing) jumps = 1;
         if (Input.GetKeyDown(KeyCode.Space) && (isGrounded || jumps > 0)) // Si la touche espace est enfoncée & qu'il est sur le sol OU qu'il lui reste un double saut
         {
+            StopClimb();
             rb.velocity = Vector3.zero;
             Jump();
             jumps--;
@@ -125,7 +77,7 @@ public class PlayerScript : MonoBehaviour
     {
         if (canDash)
         {
-            if (Input.GetKeyDown(KeyCode.LeftShift) && (moveInput != 0))
+            if (Input.GetKeyDown(KeyCode.LeftShift) && (moveInput != 0) && !isClimbing)
             {
 
                 if (dashCoolCounter <= 0 && dashCounter <= 0)
@@ -155,6 +107,14 @@ public class PlayerScript : MonoBehaviour
             }
         }
     }
+
+    private void checkClimb(){
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            StopClimb();
+        }
+    }
+
 
     private void checkCheat()
     {
@@ -193,6 +153,12 @@ public class PlayerScript : MonoBehaviour
     {
         if (col.CompareTag("Ladder"))
         {
+            StopClimb();
+        }
+    }
+
+    private void StopClimb()
+    {
             if (isClimbing)
             {
                 isClimbing = false;
@@ -200,7 +166,6 @@ public class PlayerScript : MonoBehaviour
                 activeSpeed = DefaultmoveSpeed;
                 Debug.Log("Stop Climb");
             }
-        }
     }
 
     private void StartClimb(Collider2D col)
@@ -216,7 +181,8 @@ public class PlayerScript : MonoBehaviour
                         isClimbing = true;
                         rb.velocity = Vector3.zero;
                         rb.gravityScale = 0f;
-                        activeSpeed = DefaultmoveSpeed / 1.5f;
+                        activeSpeed = DefaultmoveSpeed / 2.0f;
+                        jumps = 1;
                         Debug.Log("Start Climb");
                     }
                 }
