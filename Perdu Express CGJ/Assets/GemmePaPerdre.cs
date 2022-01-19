@@ -11,6 +11,8 @@ public class GemmePaPerdre : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Player"))
         {
+            PickupText pickupText = GetComponent<PickupText>();
+            pickupText.ShowPickupText("GemmePasPerdre : \n Tu peux maintenant grimper aux murs ! (D");
             this.gameObject.SetActive(false);
             ps.canClimbing = true;
             bruitage.Play(0);

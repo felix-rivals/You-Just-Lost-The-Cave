@@ -11,6 +11,8 @@ public class DiamantEtPerdre : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Player"))
         {
+PickupText pickupText = GetComponent<PickupText>();
+            pickupText.ShowPickupText("DiamantEtPerdre :\nTu peux maintenant dasher ! (shift + direction)");
             this.gameObject.SetActive(false);
             ps.canDash = true;
             bruitage.Play(0);

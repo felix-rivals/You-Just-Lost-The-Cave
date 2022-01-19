@@ -36,6 +36,9 @@ public class PlayerScript : MonoBehaviour //359.4, -35.2
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        canDoubleJump = false;
+        canClimbing = false;
+        canDash = false;
         DefaultmoveSpeed = 12;
         activeSpeed = DefaultmoveSpeed;
         jumpHeight = 34;
